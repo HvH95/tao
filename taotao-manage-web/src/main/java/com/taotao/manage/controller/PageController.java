@@ -13,5 +13,4 @@ public class PageController {
 	public String toPage(@PathVariable("pageName") String pageName) {
 		return pageName;
 	}
-
 }

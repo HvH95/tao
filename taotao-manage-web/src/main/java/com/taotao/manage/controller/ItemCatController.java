@@ -8,21 +8,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.taotao.manage.pojo.ItemCat;
 import com.taotao.manage.service.ItemCatService;
 
 @Controller
-@RequestMapping("item/cat")
+@RequestMapping("item")
 public class ItemCatController {
 
 	@Autowired
 	private ItemCatService itemCatService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<ItemCat>> queryItemCatListByParentId() {
+	@RequestMapping(value = "/cat", method = RequestMethod.GET)
+	public ResponseEntity<List<ItemCat>> queryItemCatListByParentId(
+			@RequestParam(value = "id", defaultValue = "0") Long parentId) {
 		try {
-			List<ItemCat> list = itemCatService.queryItemCatListByParentId(0L);
+			// List<ItemCat> list =
+			// itemCatService.queryItemCatListByParentId(parentId);
+			ItemCat record = new ItemCat();
+			record.setParentId(parentId);
+			List<ItemCat> list = itemCatService.queryListByWhere(record);
+
 			if (null == list || list.isEmpty()) {
 				// 资源不存在
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -31,8 +38,6 @@ public class ItemCatController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//500
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	}
-
 }

@@ -21,7 +21,7 @@ public class ItemCat extends BasePojo {
     private Integer sortOrder;
 
     private Boolean isParent;
-    
+
     public Long getId() {
         return id;
     }
@@ -68,6 +68,15 @@ public class ItemCat extends BasePojo {
 
     public void setIsParent(Boolean isParent) {
         this.isParent = isParent;
+    }
+
+    // 扩展text字段，用于easyui的tree组件使用
+    public String getText() {
+        return this.getName();
+    }
+
+    public String getState() {
+        return this.getIsParent() ? "closed" : "open";
     }
 
 }

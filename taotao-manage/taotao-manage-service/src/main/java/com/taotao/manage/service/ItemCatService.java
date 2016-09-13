@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.taotao.common.bean.ItemCatResult;
 import com.taotao.manage.mapper.ItemCatMapper;
 import com.taotao.manage.pojo.ItemCat;
 
@@ -16,14 +17,15 @@ public class ItemCatService extends BaseService<ItemCat> {
 
 	/**
 	 * 根据父节点id查询商品类目列表
-	 * 
-	 * @param parentId
-	 * @return
 	 */
 	public List<ItemCat> queryItemCatListByParentId(Long parentId) {
 		ItemCat record = new ItemCat();
 		record.setParentId(parentId);
 		return itemCatMapper.select(record);
+	}
+
+	public ItemCatResult queryAllToTree() {
+		return null;
 	}
 
 }

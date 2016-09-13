@@ -4,14 +4,16 @@
 	<parent>
 		<groupId>com.taotao.manage</groupId>
 		<artifactId>taotao-manage</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>taotao-manage-mapper</artifactId>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>com.taotao.manage</groupId>
 			<artifactId>taotao-manage-pojo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<!-- Mybatis -->
 		<dependency>
@@ -30,5 +32,4 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
 </project>
